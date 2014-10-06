@@ -136,7 +136,7 @@ app.get('/api/calendar/:year/:month', function(req, res){
 		        var data = $(this);
 		        company = data.text();//data.children().first().text();            
                 link = data.attr('href');//children().last().children().text();
-                var thisJson = { company : "", link : "", id:"",info:""}};
+                var thisJson = { company : "", link : "", id:"",info:""};
 		        thisJson.company = company;
                 thisJson.link = link;
                 thisJson.id = link.match(/=(.+)/)[1];

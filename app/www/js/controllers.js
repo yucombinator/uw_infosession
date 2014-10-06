@@ -33,19 +33,29 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope,$http) {
-  $scope.playlists = [
+.controller('EventsCtrl', function($scope,$http) {
+  $scope.events = [
     { company: 'Loading...'}
   ];
     
   $http.get('http://uw-infosession.herokuapp.com/api/calendar/').
     success(function(data, status, headers, config) {
-      $scope.playlists = data;
+      $scope.events = data;
     }).
     error(function(data, status, headers, config) {
       // log error
     });
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('EventCtrl', function($scope, $stateParams,$http) {
+    $scope.id = $stateParams.id;
+    $scope.item = {company:"Loading..."};
+
+    $http.get('http://uw-infosession.herokuapp.com/api/event/'+$scope.id).
+    success(function(data, status, headers, config) {
+      $scope.item = data;
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
 });

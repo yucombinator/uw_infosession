@@ -4,6 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 var marked = require('marked');
+var moment = require('moment');
 fs = require('fs');
         
 //ENABLE CORS
@@ -131,14 +132,17 @@ app.get('/api/event/:id', function(req, res){
                 console.log(data.children().length);
 
                 json.company = data.children().first().children().eq(1).text();
-                json.date = data.children().eq(1).children().eq(1).text();
+                var date = data.children().eq(1).children().eq(1).text();
+                json.date_human = date;
+                json.date = moment(date, "MMM D, YYYY", en);
                 json.time = data.children().eq(2).children().eq(1).text();
+                
                 json.location = data.children().eq(3).children().eq(1).text();
                 
                 json.website = data.children().eq(4).children().eq(1).text();
                 json.programs = data.children().eq(5).children().eq(0).text();
                 
-                json.descrption = data.children().eq(6).children().eq(0).text();
+                json.description = data.children().eq(6).children().eq(0).text();
                 json.rsvplink = "https://info.uwaterloo.ca/infocecs/students/rsvp/index.php?id="+req.param("id")+"&mode=on";
                 
 	        })

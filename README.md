@@ -44,6 +44,7 @@ params:
 Returns a JSON object containing information for the given info session id:
 
 * **company:** Name of the company
+* **date_human:** Formatted date
 * **date:** Date
 * **time:** Time
 * **location:** Location on campus

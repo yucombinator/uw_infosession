@@ -95,7 +95,7 @@ app.get('/api/calendar', function(req, res){
 		        company = data.text();//data.children().first().text();     
                 //console.log(data);
                 link = data.attr('href');//children().last().children().text();
-                var thisJson = { company : "", link : "", id:""};
+                var thisJson = { company : "", link : "", id:"",info:""};
 		        thisJson.company = company;
                 thisJson.link = link;
                 thisJson.id = link.match(/=(.+)/)[1];
@@ -136,7 +136,7 @@ app.get('/api/calendar/:year/:month', function(req, res){
 		        var data = $(this);
 		        company = data.text();//data.children().first().text();            
                 link = data.attr('href');//children().last().children().text();
-                var thisJson = { company : "", link : "", id:""};
+                var thisJson = { company : "", link : "", id:"",info:""}};
 		        thisJson.company = company;
                 thisJson.link = link;
                 thisJson.id = link.match(/=(.+)/)[1];

@@ -134,7 +134,7 @@ app.get('/api/event/:id', function(req, res){
                 json.company = data.children().first().children().eq(1).text();
                 var date = data.children().eq(1).children().eq(1).text();
                 json.date_human = date;
-                json.date = moment(date, "MMM D, YYYY", en);
+                json.date = moment(date, "MMM D, YYYY", "en");
                 json.time = data.children().eq(2).children().eq(1).text();
                 
                 json.location = data.children().eq(3).children().eq(1).text();

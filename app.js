@@ -153,6 +153,6 @@ app.get('/api/event/:id', function(req, res){
 	})
 });
 
-app.listen(process.env.port||8081);
-console.log('Magic happens on port 8081');
+app.listen(process.env.port||80);
+console.log('Magic happens on port 80');
 exports = module.exports = app;

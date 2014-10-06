@@ -8,8 +8,6 @@ By Yu Chen Hou
   - Access info session information without using the clumbsy website
   - Access info sessions by month
 
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site] [1]:
-
 Version
 ----
 

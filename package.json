@@ -1,0 +1,25 @@
+{
+  "name": "InfosessionScraper",
+  "version": "0.0.1",
+  "description": "Scrapes infosession data from UWaterloo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icechen1/uw_infosession.git"
+  },
+  "author": "",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/icechen1/uw_infosession/issues"
+  },
+  "homepage": "https://github.com/icechen1/uw_infosession",
+  "dependencies": {
+    "cheerio": "latest",
+    "express": "latest",
+    "marked": "^0.3.2",
+    "request": "latest"
+  }
+}

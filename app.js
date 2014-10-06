@@ -39,7 +39,7 @@ app.get('/api/calendar', function(req, res){
                 var thisJson = { company : "", link : "", id:""};
 		        thisJson.company = company;
                 thisJson.link = link;
-                thisJson.id = link.match(/=(.+)/);
+                thisJson.id = link.match(/=(.+)/)[1];
                 json.push(thisJson);
 	        })
 		}
@@ -79,7 +79,7 @@ app.get('/api/calendar/:year/:month', function(req, res){
                 var thisJson = { company : "", link : "", id:""};
 		        thisJson.company = company;
                 thisJson.link = link;
-                thisJson.id = link.match(/=(.+)/);
+                thisJson.id = link.match(/=(.+)/)[1];
                 json.push(thisJson);
 	        })
 		}

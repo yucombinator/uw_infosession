@@ -45,6 +45,12 @@ angular.module('starter.controllers', [])
     error(function(data, status, headers, config) {
       // log error
     });
+    
+    //Comparator for dates (compare to current time)
+    $scope.isPast = function(item){
+    console.log(item)
+     return new Date(item.datetime) >= new Date();
+    };
 })
 
 .controller('EventCtrl', function($scope, $stateParams,$http) {

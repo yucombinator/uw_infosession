@@ -1,4 +1,4 @@
-UW Infofession API
+UW Infosession API
 =========
 
 An unofficial API to access information about coop info sessions at University of Waterloo. Runs on node.js, Moment, Express and Cheerio

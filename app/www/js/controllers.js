@@ -33,15 +33,18 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope,$http) {
   $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+    { company: 'Loading...'}
   ];
+    
+  $http.get('http://uw-infosession.herokuapp.com/api/calendar/').
+    success(function(data, status, headers, config) {
+      $scope.playlists = data;
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

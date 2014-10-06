@@ -1,12 +1,14 @@
 UW Infofession API
 =========
 
-An unofficial API to access information about coop info sessions at University of Waterloo. Runs on node.js, Express and Cheerio
+An unofficial API to access information about coop info sessions at University of Waterloo. Runs on node.js, Moment, Express and Cheerio
 
 By Yu Chen Hou
 
   - Access info session information without using the clumbsy website
   - Access info sessions by month
+
+Source: https://github.com/icechen1/uw_infosession
 
 Version
 ----
@@ -44,8 +46,8 @@ params:
 Returns a JSON object containing information for the given info session id:
 
 * **company:** Name of the company
-* **date_human:** Formatted date
-* **date:** Date
+* **date:** Formatted date
+* **datetime:** Machine readable Date
 * **time:** Time
 * **location:** Location on campus
 * **description:** Description of the company/event

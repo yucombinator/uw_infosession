@@ -1,0 +1,30 @@
+<ion-view title="{{item.company}}">
+  <ion-content class="has-header">
+    <div class="list card">
+
+      <div class="item item-icon-left">
+        <i class="icon ion-calendar"></i>
+        <h2>{{item.date}}</h2>
+        <h4>{{item.time}}</h4>
+      </div>
+
+      <div class="item item-icon-left">
+        <i class="icon ion-home"></i>
+        <h2>{{item.location}}</h2>
+      </div>
+
+      <div class="item item-icon-left item-text-wrap">
+        <i class="icon ion-card"></i>
+        <h3>{{item.description}}</h3>
+      </div>
+      <a href="{{item.website}}" class="item item-icon-left">
+        <i class="icon ion-earth"></i>
+        Go to website
+      </a>
+      <a href="{{item.rsvplink}}" class="item item-icon-left">
+        <i class="icon ion-log-in"></i>
+        RSVP
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

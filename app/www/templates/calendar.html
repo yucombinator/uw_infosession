@@ -1,0 +1,22 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title">Calendar</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeDateChooser()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doCalendar()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Choose a month</span>
+           <input type="month"> 
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Calendar</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</div>
+

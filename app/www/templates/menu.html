@@ -9,18 +9,18 @@
 
   <ion-side-menu side="left" expose-aside-when="large">
     <header class="bar bar-header bar-stable">
-      <h1 class="title">Left</h1>
+      <h1 class="title">Menu</h1>
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          Login
-        </ion-item>
         <ion-item nav-clear menu-close href="#/app/events">
           Upcoming Events
         </ion-item>
+        <ion-item nav-clear menu-close ng-click="selectMonth()">
+          Calendar
+        </ion-item>
         <ion-item nav-clear menu-close href="#/app/search">
-          Search
+          Credits
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/browse">
           Browse

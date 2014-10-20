@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('EventsCtrl', function($scope,$http) {
+.controller('EventsCtrl', function($scope,$http,$q) {
   $scope.events = [
     { company: 'Loading...'}
   ];
@@ -41,6 +41,20 @@ angular.module('starter.controllers', [])
   $http.get('http://uw-infosession.herokuapp.com/api/calendar/').
     success(function(data, status, headers, config) {
       $scope.events = data;
+      console.log($scope.events);
+      //Load up more details
+      var promises = [];
+      for(event_info of $scope.events){
+        //console.log(event_info.id);
+        var request = $http.get('http://uw-infosession.herokuapp.com/api/event/'+event_info.id);
+        promises.push(request); //QUEUE THE REQUEST
+      }
+     $q.all(promises).then(function(values) {
+         console.log(values);
+         for (var i = 0; i < values.length; ++i) {
+            $scope.events[i].details = values[i].data;
+        }
+     });
     }).
     error(function(data, status, headers, config) {
       // log error

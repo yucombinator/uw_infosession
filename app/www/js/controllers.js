@@ -50,10 +50,11 @@ angular.module('starter.controllers', [])
         promises.push(request); //QUEUE THE REQUEST
       }
      $q.all(promises).then(function(values) {
-         console.log(values);
+         //console.log(values);
          for (var i = 0; i < values.length; ++i) {
             $scope.events[i].details = values[i].data;
         }
+         console.log($scope.events);
      });
     }).
     error(function(data, status, headers, config) {

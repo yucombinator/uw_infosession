@@ -4,10 +4,16 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
-    <a class="item" ng-repeat="item in events | filter:search" href="#/app/events/{{item.id}}">
-      <h2>{{item.company}} </h2>
-      <p>{{item.details.date}} {{item.details.time}}</p>
-    </a>
+
+    <div ng-repeat="(key, value) in events | groupBy: 'details.date'">
+        <div class="item item-divider">
+            {{ key }}
+        </div>
+        <a class="item" ng-repeat="item in value | filter:search" href="#/app/events/{{item.id}}">
+            <h2>{{item.company}} </h2>
+            <p>{{item.details.date}} {{item.details.time}}</p>
+        </a>
+    </div>
     </ion-list>
   </ion-content>
 </ion-view>

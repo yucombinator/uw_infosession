@@ -61,13 +61,27 @@ angular.module('starter.controllers', [])
       // log error
     });
     
-    //Comparator for dates (compare to current time)
-    $scope.isPast = function(item){
-    console.log(item)
-     return new Date(item.datetime) >= new Date();
-    };
 })
-
+.filter('isPast', function() {         //Date comparator
+  return function(items) {
+    var filtered = [];
+    var current = new Date();
+    try{
+        angular.forEach(items, function(item) {
+          if(item.details.datetime != null){
+              //console.log(item)
+              if(new Date(item.details.datetime) >= current) {     
+                console.log(new Date(item) >= new Date())
+                filtered.push(item);
+              }
+          }
+        });
+    }catch(e){
+        
+    }
+    return filtered;
+  };
+})
 .controller('EventCtrl', function($scope, $stateParams,$http) {
     $scope.id = $stateParams.id;
     $scope.item = {company:"Loading..."};

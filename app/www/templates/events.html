@@ -5,11 +5,11 @@
   <ion-content class="has-header">
     <ion-list>
 
-    <div ng-repeat="(key, value) in events | groupBy: 'details.date'">
+    <div ng-repeat="(key, values) in events | isPast | groupBy: 'details.datetime'">
         <div class="item item-divider">
-            {{ key }}
+            {{ values[0].details.date }}
         </div>
-        <a class="item" ng-repeat="item in value | filter:search" href="#/app/events/{{item.id}}">
+        <a class="item" ng-repeat="item in values | filter:search" href="#/app/events/{{item.id}}">
             <h2>{{item.company}} </h2>
             <p>{{item.details.date}} {{item.details.time}}</p>
         </a>

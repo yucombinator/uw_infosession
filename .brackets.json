@@ -1,5 +1,8 @@
 {
     "jscodehints.detectedExclusions": [
-        "C:/Users/Icechen1/Dropbox/Projects/infosession/app/platforms/android/assets/www/lib/ionic/js/angular/angular-sanitize.min.js"
+        "C:/Users/Icechen1/Dropbox/Projects/infosession/app/platforms/android/assets/www/lib/ionic/js/angular/angular-sanitize.min.js",
+        "C:/Users/YuChen/Dropbox/Projects/infosession/app/gulpfile.js",
+        "C:/Users/YuChen/Dropbox/Projects/infosession/app.js",
+        "C:/Users/YuChen/Dropbox/Projects/infosession/app/www/js/controllers.js"
     ]
 }

@@ -14,6 +14,12 @@
             <p>{{item.details.date}} {{item.details.time}}</p>
         </a>
     </div>
+    <div class="item item-icon-left" ng-click="nextMonth()" ng-show="loaded">
+        <i class="icon ion-plus-round"></i>Load next month
+    </div>
+    <div class="item item-icon-left" ng-hide="loaded">
+        <i class="icon ion-refreshing"></i>Loading
+    </div>
     </ion-list>
   </ion-content>
 </ion-view>

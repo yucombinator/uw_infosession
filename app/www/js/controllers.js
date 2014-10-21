@@ -66,12 +66,13 @@ angular.module('starter.controllers', [])
   return function(items) {
     var filtered = [];
     var current = new Date();
+    current.setDate(current.getDate() - 1); //yesterday
     try{
         angular.forEach(items, function(item) {
           if(item.details.datetime != null){
               //console.log(item)
               if(new Date(item.details.datetime) >= current) {     
-                console.log(new Date(item) >= new Date())
+                console.log(new Date(item) >= current)
                 filtered.push(item);
               }
           }

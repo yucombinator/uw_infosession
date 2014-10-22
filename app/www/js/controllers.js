@@ -154,8 +154,8 @@ angular.module('starter.controllers', [])
     });
     
     $scope.addtoCalendar = function(){
-        //var $scope.date = new Date($scope.year, $scope.month, 1, 1, 1, 1, 1);
-        //var $scope.date = new Date($scope.year, $scope.month, 1, 1, 1, 1, 1);
+        $scope.date = new Date($scope.datetime);
+        $scope.date.setHours();
         window.plugins.calendar.createEvent($scope.company,$scope.location,$scope.description,$scope.date,endDate,
         function(){
             //success

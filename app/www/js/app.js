@@ -30,11 +30,11 @@ angular.module('starter', ['ionic', 'starter.controllers','angular.filter'])
       controller: 'AppCtrl'
     })
 
-    .state('app.search', {
+    .state('app.credits', {
       url: "/search",
       views: {
         'menuContent' :{
-          templateUrl: "templates/search.html"
+          templateUrl: "templates/credits.html"
         }
       }
     })
@@ -47,6 +47,15 @@ angular.module('starter', ['ionic', 'starter.controllers','angular.filter'])
         }
       }
     })
+    .state('app.events/:year/:month', {
+      url: "/events/:year/:month",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/events.html",
+          controller: 'EventsCtrl'
+        }
+      }
+    })
     .state('app.events', {
       url: "/events",
       views: {
@@ -56,7 +65,6 @@ angular.module('starter', ['ionic', 'starter.controllers','angular.filter'])
         }
       }
     })
-
     .state('app.single', {
       url: "/events/:id",
       views: {

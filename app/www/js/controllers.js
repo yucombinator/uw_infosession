@@ -1,8 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout,$location) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$state) {
   // Form data for the calendar modal
-  $scope.calendarData = {};
+  $scope.selectedDate = new Date();
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/calendar.html', {
@@ -24,21 +24,26 @@ angular.module('starter.controllers', [])
   // Perform the login action when the user submits the login form
   $scope.doCalendar= function() {
     console.log('Changing date');
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+    $state.go('app.events/:year/:month',{year:$scope.selectedDate.getFullYear(),month:$scope.selectedDate.getMonth()});
+    //$scope.load($selectedDate);
   };
 })
 
-.controller('EventsCtrl', function($scope,$http,$q) {
+.controller('EventsCtrl', function($scope,$http,$q,$stateParams) {
+    $scope.year = $stateParams.year;
+    $scope.month = $stateParams.month;
+    $scope.isPastFilteringEnabled = true;
+    
     $scope.loaded = false;
     $scope.load = function(datetime){
         $scope.current = datetime;
-        //console.log("Loading " + datetime.getFullYear()+"/"+datetime.getMonth());
-        $http.get('http://uw-infosession.herokuapp.com/api/calendar/'+datetime.getFullYear()+"/"+datetime.getMonth()+1).
+        console.log("Load month: " + $scope.current.getMonth());
+        var month = parseInt(datetime.getMonth())+1;
+        var url = 'http://uw-infosession.herokuapp.com/api/calendar/'
+            +datetime.getFullYear()+
+            "/"+month;
+        //console.log(url);
+        $http.get(url).
         success(function(data, status, headers, config) {
           //$scope.events = data;
           //console.log($scope.events);
@@ -53,6 +58,7 @@ angular.module('starter.controllers', [])
              //console.log(values);
              for (var i = 0; i < values.length; ++i) {
                 data[i].details = values[i].data;
+                data[i].visible = true; //so the filter shows it
                 $scope.events.push(data[i]);
             }
              console.log($scope.events);
@@ -68,18 +74,39 @@ angular.module('starter.controllers', [])
     $scope.nextMonth = function(){
         $scope.loaded = false;
         $scope.current.setMonth($scope.current.getMonth()+1);
-        console.log("Load month: " + $scope.current.getMonth());
+        //console.log("Load month: " + $scope.current.getMonth());
         $scope.load($scope.current);
     }
     
     //cache it locally
-    if($scope.$parent.events == null){
+    if($scope.year || $scope.month){
+        //is this calendar view? if so, disable past dats filtering
+        console.log("isPastFilteringEnabled");
         $scope.events = [];
-        $scope.load(new Date());
+        $scope.$parent.events == null; //clear cache
+        $scope.isPastFilteringEnabled = false;
+        $scope.current = new Date($scope.year, $scope.month, 1, 1, 1, 1, 1);
+        $scope.load($scope.current);
+        
+        //set title
+        $scope.title = "Events in " + $scope.year +"/" +$scope.month;
     }else{
-      $scope.events = $scope.$parent.events;
-      $scope.loaded = true;
+        $scope.title = "Upcoming Events"
+        if($scope.$parent.events == null){
+            $scope.events = [];
+            //console.log("TEST");
+            $scope.load(new Date());
+            //load more items if near end of month
+            if(new Date().getDate() >20){
+             $scope.nextMonth();
+            }
+        }else{
+            //cached data found?
+          $scope.events = $scope.$parent.events;
+          $scope.loaded = true;
+        }
     }
+    
       /* $scope.events = [
         { company: 'Loading...'}
       ];    */
@@ -87,24 +114,31 @@ angular.module('starter.controllers', [])
     
 })
 .filter('isPast', function() {         //Date comparator
-  return function(items) {
-    var filtered = [];
+  return function(items,enabled) {
+      //console.log("yes");
+    if (enabled == false){
+        return items; // no filtering done
+    }
+      //console.log("no");
     var current = new Date();
     current.setDate(current.getDate() - 1); //yesterday
     try{
         angular.forEach(items, function(item) {
           if(item.details.datetime != null){
               //console.log(item)
+              //console.log(new Date(item) >= current)
               if(new Date(item.details.datetime) >= current) {     
-                console.log(new Date(item) >= current)
-                filtered.push(item);
+                //console.log(new Date(item) >= current)
+                item.visible = true;
+              }else{
+                item.visible = false;
               }
           }
         });
     }catch(e){
         
     }
-    return filtered;
+    return items;
   };
 })
 .controller('EventCtrl', function($scope, $stateParams,$http) {
@@ -118,4 +152,15 @@ angular.module('starter.controllers', [])
     error(function(data, status, headers, config) {
       // log error
     });
+    
+    $scope.addtoCalendar = function(){
+        //var $scope.date = new Date($scope.year, $scope.month, 1, 1, 1, 1, 1);
+        //var $scope.date = new Date($scope.year, $scope.month, 1, 1, 1, 1, 1);
+        window.plugins.calendar.createEvent($scope.company,$scope.location,$scope.description,$scope.date,endDate,
+        function(){
+            //success
+        },function(){
+            //error
+        });
+    };
 });

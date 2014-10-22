@@ -1,15 +1,15 @@
-<ion-view title="Upcoming Events">
+<ion-view title="{{title}}">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
 
-    <div ng-repeat="(key, values) in events | isPast | groupBy: 'details.datetime'">
-        <div class="item item-divider">
+    <div ng-repeat="(key, values) in events |isPast:isPastFilteringEnabled| groupBy: 'details.datetime'">
+        <div ng-show="values[0].visible" class="item item-divider">
             {{ values[0].details.date }}
         </div>
-        <a class="item" ng-repeat="item in values | filter:search" href="#/app/events/{{item.id}}">
+        <a class="item" ng-show="item.visible" ng-repeat="item in values" href="#/app/events/{{item.id}}">
             <h2>{{item.company}} </h2>
             <p>{{item.details.date}} {{item.details.time}}</p>
         </a>

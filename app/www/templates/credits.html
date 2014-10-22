@@ -1,4 +1,7 @@
-<ion-view title="{{item.company}}">
+<ion-view title="Search">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
   <ion-content class="has-header">
     <div class="list card">
 
@@ -13,15 +16,15 @@
         <h2>{{item.location}}</h2>
       </div>
 
-      <div class="item item-icon-left item-text-wrap" ng-show="item.description">
+      <div class="item item-icon-left item-text-wrap">
         <i class="icon ion-card"></i>
         <h3>{{item.description}}</h3>
       </div>
-      <a href="window.open('{{item.website}}', '_system');" class="item item-icon-left">
+      <a href="{{item.website}}" class="item item-icon-left">
         <i class="icon ion-earth"></i>
         Go to website
       </a>
-      <a href="window.open('{{item.rsvplink}}', '_system');" class="item item-icon-left">
+      <a href="{{item.rsvplink}}" class="item item-icon-left">
         <i class="icon ion-log-in"></i>
         RSVP
       </a>

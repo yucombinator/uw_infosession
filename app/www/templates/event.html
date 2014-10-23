@@ -17,11 +17,11 @@
         <i class="icon ion-card"></i>
         <h3>{{item.description}}</h3>
       </div>
-      <a href="window.open('{{item.website}}', '_system');" class="item item-icon-left">
+      <a ng-click="window.open('{{item.website}}', '_system');" class="item item-icon-left">
         <i class="icon ion-earth"></i>
         Go to website
       </a>
-      <a href="window.open('{{item.rsvplink}}', '_system');" class="item item-icon-left">
+      <a ng-click="window.open('{{item.rsvplink}}', '_system');" class="item item-icon-left">
         <i class="icon ion-log-in"></i>
         RSVP
       </a>

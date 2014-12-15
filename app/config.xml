@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.uwinfosession805105" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap= "http://phonegap.com/ns/1.0">
-  <name>UWInfoSession</name>
+<widget id="com.icechen1.uwinfosession" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap= "http://phonegap.com/ns/1.0">
+  <name>WatInfoSession</name>
     <gap:plugin name="nl.x-services.plugins.calendar" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
   <description>
         An Ionic Framework and Cordova project.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="me@yuchenhou.com" href="http://yuchenhou.com/">
+      Yu Chen Hou
     </author>
   <content src="index.html"/>
   <access origin="*"/>

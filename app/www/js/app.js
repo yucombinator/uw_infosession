@@ -31,7 +31,7 @@ angular.module('starter', ['ionic', 'starter.controllers','angular.filter'])
     })
 
     .state('app.credits', {
-      url: "/search",
+      url: "/credits",
       views: {
         'menuContent' :{
           templateUrl: "templates/credits.html"

@@ -1,33 +1,17 @@
-<ion-view title="Search">
+<ion-view title="About">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-    <div class="list card">
+<div class="list card">
+  <div class="item item-text-wrap">
+    WatInfoSession is made in Ionic Framework by Yu Chen Hou, using information publicly provided by the University of Waterloo. For help and support please contact me via my website.
+  </div>
+  <a ng-click="$parent.open('http://yuchenhou.com',true);" class="item item-icon-left">
+    <i class="icon ion-earth"></i>
+    My Website
+  </a>
 
-      <div class="item item-icon-left">
-        <i class="icon ion-calendar"></i>
-        <h2>{{item.date}}</h2>
-        <h4>{{item.time}}</h4>
-      </div>
-
-      <div class="item item-icon-left">
-        <i class="icon ion-home"></i>
-        <h2>{{item.location}}</h2>
-      </div>
-
-      <div class="item item-icon-left item-text-wrap">
-        <i class="icon ion-card"></i>
-        <h3>{{item.description}}</h3>
-      </div>
-      <a href="{{item.website}}" class="item item-icon-left">
-        <i class="icon ion-earth"></i>
-        Go to website
-      </a>
-      <a href="{{item.rsvplink}}" class="item item-icon-left">
-        <i class="icon ion-log-in"></i>
-        RSVP
-      </a>
-    </div>
+</div>
   </ion-content>
 </ion-view>

@@ -1,5 +1,6 @@
 UW Infosession API
 =========
+*Get the app for Android [here](https://play.google.com/store/apps/details?id=com.icechen1.uwinfosession)!*
 
 An unofficial API to access information about coop info sessions at University of Waterloo. Runs on node.js, Moment, Express and Cheerio
 
